@@ -1,41 +1,54 @@
 <div class="container ">
-    <form>
-        <div class="row mb-4">
-          <div class="col">
-            <div class="form-outline">
-            <label class="form-label" for="form6Example1">Title</label>
-              <input type="text" id="form6Example1" class="form-control" />
-             
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-outline mb-2">
-                <label class="form-label" for="form6Example6">Price</label>
-                <input type="number" id="form6Example6" class="form-control" />
-                
-              </div>
-            
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      <div class="row mb-4">
+        <div class="col">
+          <div class="form-outline">
+          <label class="form-label" for="form6Example1">Title</label>
+            <input type="text" id="form6Example1" class="form-control" formControlName="title" #title/>
+            <p class="text-danger" *ngIf=" addForm.get('title')?.invalid && addForm.get('title')?.touched" >This field is required!</p>
           </div>
         </div>
-        
-        <!-- Message input -->
-        <div class="form-outline mb-4">
-            <label class="form-label" for="form6Example7">Description</label>
-          <textarea class="form-control" id="form6Example7" rows="4"></textarea>
+        <div class="col">
+          <div class="form-outline mb-2">
+              <label class="form-label" for="form6Example6">Price</label>
+              <input type="number" id="form6Example6" class="form-control" formControlName="price"/>
+              <p class="text-danger" *ngIf=" addForm.get('price')?.invalid && addForm.get('price')?.touched" >This field is required!</p>
+            </div>
           
         </div>
+      </div>
       
-        <div class="form-outline mb-4">
-            <select class="form-select" aria-label="Default select example">
-                <option >Select a Category</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-             
-        </div>
+      <!-- Message input -->
+      <div class="form-outline mb-4">
+          <label class="form-label" for="form6Example7">Description</label>
+        <textarea class="form-control" id="form6Example7" rows="4" formControlName="description"></textarea>
+        <p class="text-danger" *ngIf=" addForm.get('description')?.invalid && addForm.get('description')?.touched" >This field is required!</p>
+        
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-7" >
+      <div class="form-outline" formArrayName="images">
+        <label class="form-label" for="form6Example1">images</label>
+          <input *ngFor="let img of imgs.controls; let i=index"  type="text" id="form6Example1" class="form-control mb-3" [formControlName]="i"/>
+      </div>
+      <div class="col-3">
+        <button class="btn btn-sm btn-primary" (click)="onMoreImg()" >Add more Image</button>
+      </div>
+    </div>
+  </div>
+    
+      <div class="form-outline mb-4">
+        <label class="form-label" for="form6Example1">Category</label>
+          <select class="form-select" aria-label="Default select example" formControlName="category">
+              
+              <option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
+            </select>
+           
+      </div>
+    
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-success px-3 btn-block  mb-4" [disabled]="addForm.invalid" >Add </button>
       
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-dark btn-block  mb-4">Add </button>
-      </form>
+    </form>
 </div>

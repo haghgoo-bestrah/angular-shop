@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,9 +13,6 @@ import { AddProductComponent } from './components/admin/add-product/add-product.
 import { HeaderComponent } from './components/header/header.component';
 import { EditProductListComponent } from './components/admin/edit-product/edit-product-list/edit-product-list.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
-
-
-
 
 @NgModule({
   declarations: [
@@ -33,6 +31,7 @@ import { EditProductComponent } from './components/admin/edit-product/edit-produ
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
