@@ -1,0 +1,25 @@
+<div class="container py-3">
+    <h3 class="my-2 mb-4">Shoping Cart</h3>
+
+  <table class="table mt-2">
+    <thead  class="table-dark">
+      <tr>
+        <th scope="col">Picture</th>
+        <th scope="col">Name</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Price</th>
+        
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let item of cartItems">
+        <th scope="row"><img src={{item.images[0]}} alt="" style="width: 8rem; height:5rem;"></th>
+        <td ><a [routerLink]="['/product', item.id]"><h5 class=" mx-3">
+            {{item.title}}
+          </h5></a></td>
+        <td>1</td>
+        <td>${{item.price}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

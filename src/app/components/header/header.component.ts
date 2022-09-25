@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CardService } from 'src/app/services/card.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  cardCount !: number
+  constructor(private cardservice: CardService) { }
 
   ngOnInit(): void {
+    this.cardservice.cardCount.subscribe((num)=> {
+      this.cardCount = num
+    })
   }
 
 }

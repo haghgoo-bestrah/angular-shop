@@ -13,6 +13,7 @@ import { AddProductComponent } from './components/admin/add-product/add-product.
 import { HeaderComponent } from './components/header/header.component';
 import { EditProductListComponent } from './components/admin/edit-product/edit-product-list/edit-product-list.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { EditProductComponent } from './components/admin/edit-product/edit-produ
     HeaderComponent,
     EditProductComponent,
     EditProductListComponent,
+    CardComponent,
 
   ],
   imports: [
